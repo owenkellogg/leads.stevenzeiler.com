@@ -1,0 +1,17 @@
+webapp:
+  build: .
+  volumes:
+    - .:/usr/src/app
+  ports:
+    - "1337:1337"
+  links:
+    - postgres
+  environment:
+    - NODE_ENV=production
+    - DATABASE_URL=postgres://postgres:postgres@postgres/postgres
+    - ADMIN_KEY=12345
+postgres:
+  image: postgres
+  ports:
+    - "5432:5432"
+  
